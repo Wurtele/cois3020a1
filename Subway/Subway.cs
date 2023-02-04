@@ -82,7 +82,16 @@ namespace A1Q1 {
                 }
             }
 
-            public bool RemoveConnection(string name1, string name2, Colour c) { … }
+            public bool RemoveConnection(string name1, string name2, Colour c) {
+
+                int i;
+
+                //REMOVE EDGE FOR BOTH STATIONS SINCE UNDIRECTED
+                //if (S.ContainsKey(name1) && (i = S[name1].FindConnection(name2) > -1))
+                //{
+                    //S[name1].E.RemoveAt(i);
+                //}
+            }
 
             public void ShortestRoute(string name1, string name2) { … }
         }
