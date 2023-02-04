@@ -28,7 +28,7 @@ namespace A1Q1 {
                 E = new List<Node<T>>();
             }
 
-            public int FindConnection(string name)
+            public int FindConnection(string name)      //i think this should be changed to traverse a linked list, not an array
             {
                 int i;
                 for (i = 0; i < E.Count; i++)
@@ -87,10 +87,10 @@ namespace A1Q1 {
                 int i;
 
                 //REMOVE EDGE FOR BOTH STATIONS SINCE UNDIRECTED
-                //if (S.ContainsKey(name1) && (i = S[name1].FindConnection(name2) > -1))
-                //{
-                    //S[name1].E.RemoveAt(i);
-                //}
+                if (S.ContainsKey(name1) && (i = S[name1].FindConnection(name2) > -1))
+                {
+                    S[name1].E.RemoveAt(i);
+                }
             }
 
             public void ShortestRoute(string name1, string name2) { … }
