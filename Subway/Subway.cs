@@ -1,8 +1,16 @@
 ﻿using System;
 
-public class Class1
+namespace Subway
 {
-	public Class1()
-	{
-	}
+    public class SubwayMap
+    {
+
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("hi");
+        }
+    }
 }
