@@ -17,6 +17,8 @@ namespace A1Q1 {
             }
         }
 
+        //------------------------------------------
+
         private class Station
         {
             public string Name { get; set; }            // Name of the subway station
@@ -41,16 +43,31 @@ namespace A1Q1 {
             }
         }
 
-        
+        //------------------------------------------
+
+        public class LinkedList
+        {
+            private Node head;
+
+            public void AddFirstNode(Station connection, Colour c, Node next)
+            {
+                Node newNode = new Node(connection, c, next);
+                head = newNode;
+            }
+        }
+
+        //------------------------------------------
+
         public interface ISubwayMap
         {
             void InsertStation(string name);
             bool RemoveStation(string name);
-            bool InsertConnection(string name1, string name2, Color c);
-            bool RemoveConnection(string name1, string name2, Color c);
-            void ShortestRoute(string name1, string name2, Color c);
+            bool InsertConnection(string name1, string name2, Colour c);
+            bool RemoveConnection(string name1, string name2, Colour c);
+            void ShortestRoute(string name1, string name2, Colour c);
         }
 
+        //------------------------------------------
 
         public class SubwayMap : ISubwayMap
         {
@@ -59,7 +76,7 @@ namespace A1Q1 {
             public SubwayMap() {
                 S = new Dictionary<string, Station>();
             }
-
+            
             public void InsertStation(string name) {
                 if (S.ContainsKey(name) == false)
                 {
@@ -97,6 +114,8 @@ namespace A1Q1 {
             public void ShortestRoute(string name1, string name2) { … }
         }
     }
+
+    //------------------------------------------
 
     class Program
     {
