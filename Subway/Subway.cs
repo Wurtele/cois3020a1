@@ -27,6 +27,17 @@ namespace A1Q1 {
                 Visited = false;
                 E = new List<Node<T>>();
             }
+
+            public int FindConnection(string name)
+            {
+                int i;
+                for (i = 0; i < E.Count; i++)
+                {
+                    if (E[i].Connection.Name.Equals(name))
+                        return i;
+                }
+                return -1;
+            }
         }
 
         
@@ -58,7 +69,18 @@ namespace A1Q1 {
 
             public bool RemoveStation(string name) { … }
 
-            public bool InsertConnection(string name1, string name2, Colour c) { … }
+            public bool InsertConnection(string stationName1, string stationName2, Colour c) {
+
+                Node<T> n;
+
+                if (S.ContainsKey(stationName1) && S.ContainsKey(stationName2)) {
+                    if (S[stationName1].FindConnection(stationName2) == -1)
+                    {
+                        //e = new Node<T>();
+                        //S[stationName1].E.Add(e);
+                    }
+                }
+            }
 
             public bool RemoveConnection(string name1, string name2, Colour c) { … }
 
