@@ -1,10 +1,8 @@
 ﻿using System;
 
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("hello world !!");
-        }
-    }
+//class Program {
+//    static void Main(string[] args)
+//    {
+//        Console.WriteLine("hello world !!");
+//    }
+//}
