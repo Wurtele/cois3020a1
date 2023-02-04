@@ -1,6 +1,6 @@
 ﻿using System;
 
-public enum Colour { RED, YELLOW, GREEN, … } // For example
+public enum Colour { RED, YELLOW, GREEN} // For example
 public class SubwayMap
 {
     private class Node
