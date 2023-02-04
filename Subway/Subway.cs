@@ -77,6 +77,7 @@ namespace A1Q1 {
                 S = new Dictionary<string, Station>();
             }
             
+
             public void InsertStation(string name) {
                 if (S.ContainsKey(name) == false)
                 {
@@ -85,8 +86,29 @@ namespace A1Q1 {
                 }
             }
 
-            public bool RemoveStation(string name) { … }
 
+            // UNFINISHED
+            // access station-to-be-removed's linked list of adjacent stations and delete the node from their lists too.
+            // finally, delete station-to-be-removed
+            // reconnect the missing link
+            public bool RemoveStation(string stationName) {
+                
+                if (S.ContainsKey(stationName))
+                {
+
+                    //for(int i = 0; i < S[stationName].E.Count; i++)       // update once linked list is implemented
+                    //{
+
+                    //}
+                }
+            }
+
+
+            // UNFINISHED
+            // check if both stations already exist
+            // check if edge does not already exist
+            // add edge to BOTH stations (since undirected)
+            // maybe also reconnect lines to accomadate the new station?
             public bool InsertConnection(string stationName1, string stationName2, Colour c) {
 
                 Node n;
@@ -95,11 +117,14 @@ namespace A1Q1 {
                     if (S[stationName1].FindConnection(stationName2) == -1)
                     {
                         Node e = new Node(S[stationName2], c, null);
-                        S[stationName1].E.Add(e);
+                        S[stationName1].E.Add(e);       // update once we implement a Linked List
                     }
                 }
             }
 
+            // UNFINISHED
+            // check if station1 is in the dictionary of stations S, then access its adj stations and remove station2 (and vice versa)
+            // i think we have to reconnect the broken link too?
             public bool RemoveConnection(string name1, string name2, Colour c) {
 
                 int i;
@@ -107,10 +132,12 @@ namespace A1Q1 {
                 //REMOVE EDGE FOR BOTH STATIONS SINCE UNDIRECTED
                 if (S.ContainsKey(name1) && (i = S[name1].FindConnection(name2) > -1))
                 {
-                    S[name1].E.RemoveAt(i);
+                    S[name1].E.RemoveAt(i);             // update once linked list is implemented
                 }
             }
 
+
+            // UNFINISHED
             public void ShortestRoute(string name1, string name2) { … }
         }
     }
