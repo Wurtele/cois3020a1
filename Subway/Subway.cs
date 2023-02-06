@@ -1,5 +1,5 @@
 ﻿// COIS-3020 Winter 2023 -- Assignment 1
-// AUTHORS: Owen Wertele, Darren, Allen Kim
+// AUTHORS: Owen Wertele, Darren Dsilva, Allen Kim
 
 
 using System;
@@ -120,11 +120,7 @@ namespace A1Q1
                 //}
             //}
 
-            // UNFINISHED
-            // check if both stations already exist
-            // check if edge does not already exist
-            // add edge to BOTH stations (since undirected)
-            // maybe also reconnect lines to accomadate the new station?
+
             public bool InsertConnection(string name1, string name2, Colour c)
             {
                 if (S.ContainsKey(name1) && S.ContainsKey(name2))
