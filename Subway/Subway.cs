@@ -95,17 +95,22 @@ namespace A1Q1 {
             // access station-to-be-removed's linked list of adjacent stations and delete the node from their lists too.
             // finally, delete station-to-be-removed
             // reconnect the missing link
-            //public bool RemoveStation(string stationName) {
+            public bool RemoveStation(string stationName) {
                 
-                //if (S.ContainsKey(stationName))
-                //{
+                if (S.ContainsKey(stationName))
+                {
+                    // now we must remove the station-to-be-removed from other stations that have connections to it
 
-                    //for(int i = 0; i < S[stationName].E.Count; i++)       // update once linked list is implemented
-                    //{
+                    if (S[stationName].E == null)
+                    {
+                        S.Remove(stationName);
 
-                    //}
-                //}
-            //}
+                    } else if(S[stationName].E.Next == null)
+                    {
+
+                    }
+                }
+            }
 
 
             // UNFINISHED
@@ -119,10 +124,7 @@ namespace A1Q1 {
 
                     // call Insert() twice to establish connection both ways
 
-                    if (Insert(stationName1, stationName2, c) && Insert(stationName2, stationName1, c))
-                    {
-                        return true;
-                    }
+                    return Insert(stationName1, stationName2, c) && Insert(stationName2, stationName1, c);
                 }
                 return false;
             }
@@ -214,7 +216,7 @@ namespace A1Q1 {
                 M.InsertStation("BBB");
                 M.InsertStation("CCC");
                 M.InsertStation("DDD");
-                M.InsertConnection("AAA", "BBB", Colour.RED);
+                M.InsertConnection("AAA", "BBB", Colour.RED); // connections are not inserting :/
                 M.InsertConnection("AAA", "BBB", Colour.BLUE);
                 M.InsertConnection("CCC", "AAA", Colour.YELLOW);
                 M.InsertConnection("DDD", "AAA", Colour.YELLOW);
