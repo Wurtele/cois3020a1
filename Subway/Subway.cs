@@ -39,8 +39,7 @@ namespace A1Q1 {
             public Station(string name) {
                 Name = name;
                 Visited = false;
-                //E = new List<Node>();
-                E = null;                 // need to fill the Node instance with parameters but idk with what
+                //E = null;                 // need to fill the Node instance with parameters but idk with what
             }
 
             //public int FindConnection(string name)      //i think this should be changed to traverse a linked list, not an array
@@ -114,16 +113,19 @@ namespace A1Q1 {
             // check if edge does not already exist
             // add edge to BOTH stations (since undirected)
             // maybe also reconnect lines to accomadate the new station?
-            //public bool InsertConnection(string stationName1, string stationName2, Colour c) {
+            public bool InsertConnection(string stationName1, string stationName2, Colour c) {
 
-                //if (S.ContainsKey(stationName1) && S.ContainsKey(stationName2)) {
+                if (S.ContainsKey(stationName1) && S.ContainsKey(stationName2)) {
 
-                    //Insert(stationName1, stationName2, c);
-                    //Insert(stationName2, stationName1, c);          // call Insert() twice to establish connection both ways
+                    // call Insert() twice to establish connection both ways
 
-                    // return bool somehow
-                //}
-            //}
+                    if (Insert(stationName1, stationName2, c) && Insert(stationName2, stationName1, c))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
 
 
             private bool Insert(string stationName1, string stationName2, Colour c)
@@ -150,6 +152,7 @@ namespace A1Q1 {
                 }
 
                 listNodeA.Next = new Node(B, c, null);
+                //Console.WriteLine("Connected " + stationName1 + " with " + listNodeA.Next.Connection.Name);
                 return true; 
             }
 
@@ -180,20 +183,20 @@ namespace A1Q1 {
                 {
                     Console.WriteLine(i.Key);
                 }
-                Console.ReadLine();
             }
 
             public void PrintConnections()
             {
+                Console.WriteLine("CONNECTIONS:");
+
                 foreach (KeyValuePair<string, Station> i in S)
                 {
-                    while(i.Value.E != null || i.Value.E.Next != null)
+                    while (i.Value.E != null)
                     {
                         Console.WriteLine("(" + i.Value.Name + "-" + i.Value.E.Line + "-" + i.Value.E.Connection.Name + ")");
                         i.Value.E = i.Value.E.Next;
                     }
                 }
-                Console.ReadLine();
             }
         }
 
@@ -209,10 +212,17 @@ namespace A1Q1 {
 
                 M.InsertStation("AAA");
                 M.InsertStation("BBB");
-                //M.InsertConn
-                
+                M.InsertStation("CCC");
+                M.InsertStation("DDD");
+                M.InsertConnection("AAA", "BBB", Colour.RED);
+                M.InsertConnection("AAA", "BBB", Colour.BLUE);
+                M.InsertConnection("CCC", "AAA", Colour.YELLOW);
+                M.InsertConnection("DDD", "AAA", Colour.YELLOW);
+
+
 
                 M.PrintStations();
+                M.PrintConnections();
             }
         }
 
