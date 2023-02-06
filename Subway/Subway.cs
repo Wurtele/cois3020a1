@@ -96,22 +96,22 @@ namespace A1Q1 {
             // access station-to-be-removed's linked list of adjacent stations and delete the node from their lists too.
             // finally, delete station-to-be-removed
             // reconnect the missing link
-            public bool RemoveStation(string stationName) {
+            //public bool RemoveStation(string stationName) {
                 
-                if (S.ContainsKey(stationName))
-                {
+                //if (S.ContainsKey(stationName))
+                //{
                     // now we must remove the station-to-be-removed from other stations that have connections to it
 
-                    if (S[stationName].E == null)
-                    {
-                        S.Remove(stationName);
+                    //if (S[stationName].E == null)
+                    //{
+                        //S.Remove(stationName);
 
-                    } else if(S[stationName].E.Next == null)
-                    {
+                    //} else if(S[stationName].E.Next == null)
+                    //{
 
-                    }
-                }
-            }
+                    //}
+                //}
+            //}
 
 
             // UNFINISHED
