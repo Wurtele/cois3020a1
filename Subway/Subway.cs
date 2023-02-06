@@ -1,5 +1,5 @@
-﻿// COIS-3020 Winter 2023 -- Assignment 1
-// AUTHORS: Owen Wertele, Darren Dsilva, Allen Kim
+﻿// AUTHORS: Owen Wertele, Darren Dsilva, Allen Kim
+// COIS-3020 Winter 2023 -- Assignment 1
 
 
 using System;
@@ -103,22 +103,24 @@ namespace A1Q1
             // access station-to-be-removed's linked list of adjacent stations and delete the node from their lists too.
             // finally, delete station-to-be-removed
             // reconnect the missing link
-            //public bool RemoveStation(string stationName) {
+            public bool RemoveStation(string stationName) {
                 
-                //if (S.ContainsKey(stationName))
-                //{
-                    // now we must remove the station-to-be-removed from other stations that have connections to it
-
-                    //if (S[stationName].E == null)
-                    //{
-                        //S.Remove(stationName);
-
-                    //} else if(S[stationName].E.Next == null)
-                    //{
-
-                    //}
-                //}
-            //}
+                if (S.ContainsKey(stationName)) 
+                {
+                    // now we must remove the station-to-be-removed from other stations that have connections to it                    
+                        S.Remove(stationName);
+                }
+                foreach (KeyValuePair<string, Station> kvp in S)
+                {
+                    Node n = kvp.Value.E;
+                    while(n.Next != null)
+                    {
+                        if (n.Next.Connection.Name == stationName) n.Next = n.Next.Next; 
+                        if (n.Next != null) n = n.Next;
+                    }
+                }
+                return false;
+            }
 
 
             public bool InsertConnection(string name1, string name2, Colour c)
@@ -263,10 +265,13 @@ namespace A1Q1
                 M.InsertConnection("AAA", "BBB", Colour.BLUE);
                 M.InsertConnection("CCC", "AAA", Colour.YELLOW);
                 M.InsertConnection("DDD", "AAA", Colour.YELLOW);
-
-
-
                 M.PrintStations();
+                M.RemoveStation("CCC");
+                Console.WriteLine("Deleted CCC");
+                M.PrintStations();
+
+
+
 
                 Console.ReadLine();
             }
