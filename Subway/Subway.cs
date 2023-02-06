@@ -257,23 +257,42 @@ namespace A1Q1
 
                 SubwayMap M = new SubwayMap();
 
-                M.InsertStation("AAA");
-                M.InsertStation("BBB");
-                M.InsertStation("CCC");
-                M.InsertStation("DDD");
-                M.InsertConnection("AAA", "BBB", Colour.RED);
-                M.InsertConnection("AAA", "BBB", Colour.BLUE);
-                M.InsertConnection("CCC", "AAA", Colour.YELLOW);
-                M.InsertConnection("DDD", "AAA", Colour.YELLOW);
-                M.PrintStations();
-                M.RemoveStation("CCC");
-                Console.WriteLine("Deleted CCC");
-                M.PrintStations();
+                
+                // TEST CASE 2 - Inserting five stations
+
+                M.InsertStation("Alpha");
+                M.InsertStation("Beta");
+                M.InsertStation("Delta");
+                M.InsertStation("Epsilon");
+                M.InsertStation("Theta");
+                //M.PrintStations();
 
 
+                // TEST CASE 3 - Inserting connections
 
+                M.InsertConnection("Alpha", "Beta", Colour.RED);
+                M.InsertConnection("Beta", "Alpha", Colour.BLUE);
+                M.InsertConnection("Delta", "Alpha", Colour.YELLOW);
+                M.InsertConnection("Epsilon", "Alpha", Colour.YELLOW);
+                M.InsertConnection("Epsilon", "Beta", Colour.BLUE);
+                M.InsertConnection("Epsilon", "Theta", Colour.RED);
+                //M.PrintStations();
+                
+
+                // TEST CASE 4
+                
+                //M.RemoveStation("CCC");
+                //Console.WriteLine("Deleted CCC");
+                //M.PrintStations();
+
+
+                // TEST CASE 5
+
+
+                // TEST CASE 6
 
                 M.ShortestRoute("Delta", "Theta");          // should be 3 lines: from Delta, Alpha, Epsilon, Theta
+
 
                 Console.ReadLine();
             }
