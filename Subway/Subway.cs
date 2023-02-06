@@ -6,23 +6,26 @@ using System;
 using System.Drawing;
 using System.Xml.Linq;
 
-namespace A1Q1 {
+namespace A1Q1
+{
     public enum Colour { RED, YELLOW, BLUE } // For example
     public class SubwaySystem
     {
         private class Node
         {
-            public Station Connection { get; set; }     // Adjacent station (connection)
+            public Station? Connection { get; set; }     // Adjacent station (connection)
             public Colour Line { get; set; }            // Colour of its subway line
             public Node? Next { get; set; }              // Link to the next adjacent station (Node)
-            
-            public Node() {
+
+            public Node()
+            {
                 Connection = null;
                 Line = 0;
                 Next = null;
             }
 
-            public Node(Station connection, Colour c, Node next) {
+            public Node(Station connection, Colour c, Node next)
+            {
                 Connection = connection;
                 Line = c;
                 Next = next;
@@ -37,22 +40,24 @@ namespace A1Q1 {
             public bool Visited { get; set; }            // Used for the breadth-first search
             public Node? E { get; set; }                 // Header node for a linked list of adjacent stations
             public Station? Parent { get; set; }
-            public Station(string name) {
+            public Station(string name)
+            {
                 Name = name;
                 Visited = false;
-                //E = null;                 // need to fill the Node instance with parameters but idk with what
+                E = new Node();
+                Parent = null;
             }
 
             //public int FindConnection(string name)      //i think this should be changed to traverse a linked list, not an array
             //{
-                //int i;
-                //Node *p;
-                //for (i = 0; i < E.Count; i++)
-                //{
-                    //if (E[i].Connection.Name.Equals(name))
-                        //return i;
-                //}
-                //return -1;
+            //int i;
+            //Node *p;
+            //for (i = 0; i < E.Count; i++)
+            //{
+            //if (E[i].Connection.Name.Equals(name))
+            //return i;
+            //}
+            //return -1;
             //}
         }
 
@@ -60,13 +65,13 @@ namespace A1Q1 {
 
         //public class LinkedList
         //{
-            //private Node head;
+        //private Node head;
 
-            //public void AddFirstNode(Station connection, Colour c, Node next)
-            //{
-                //Node newNode = new Node(connection, c, next);
-                //head = newNode;
-            //}
+        //public void AddFirstNode(Station connection, Colour c, Node next)
+        //{
+        //Node newNode = new Node(connection, c, next);
+        //head = newNode;
+        //}
         //}
 
 
@@ -76,12 +81,14 @@ namespace A1Q1 {
         {
             private Dictionary<string, Station> S;          // Dictionary of stations
 
-            public SubwayMap() {
+            public SubwayMap()
+            {
                 S = new Dictionary<string, Station>();
             }
-            
 
-            public bool InsertStation(string name) {
+
+            public bool InsertStation(string name)
+            {
                 if (S.ContainsKey(name) == false)
                 {
                     Station newStation = new Station(name);
@@ -113,65 +120,51 @@ namespace A1Q1 {
                 //}
             //}
 
-
             // UNFINISHED
             // check if both stations already exist
             // check if edge does not already exist
             // add edge to BOTH stations (since undirected)
             // maybe also reconnect lines to accomadate the new station?
-            public bool InsertConnection(string stationName1, string stationName2, Colour c) {
-
-                if (S.ContainsKey(stationName1) && S.ContainsKey(stationName2)) {
-
-                    // call Insert() twice to establish connection both ways
-
-                    return Insert(stationName1, stationName2, c) && Insert(stationName2, stationName1, c);
-                }
-                return false;
+            public bool InsertConnection(string name1, string name2, Colour c)
+            {
+                if (S.ContainsKey(name1) && S.ContainsKey(name2))
+                    return InsertDirectedConnection(name1, name2, c) &&
+                           InsertDirectedConnection(name2, name1, c);
+                else
+                    return false;
             }
 
-
-            private bool Insert(string stationName1, string stationName2, Colour c)
+            private bool InsertDirectedConnection(string start, string end, Colour c)
             {
-                Node listNodeA = S[stationName1].E;
-                Station B = S[stationName2];
+                Station startStation = S[start];
+                Station endStation = S[end];
+                Node newConnection = new Node(endStation, c, null);
 
-                if (listNodeA == null)                  // if list of Nodes is empty
+                Node n = startStation.E;
+                while (n.Next != null && !(n.Next.Connection == endStation && n.Next.Line == c))
+                    n = n.Next;
+
+                if (n.Next != null && n.Next.Connection == endStation && n.Next.Line == c)
+                    return false;
+                else
                 {
-                    listNodeA = new Node(B, c, null);
+                    n.Next = newConnection;
                     return true;
                 }
-
-                // traverse through linked list of Nodes till end is reached, or until we notice the connection already exists
-                while (listNodeA.Next != null && !(listNodeA.Connection.Name.Equals(B.Name) && listNodeA.Line == c))
-                {
-                    listNodeA = listNodeA.Next;
-                }
-
-                // return false if the connection already existed
-                if (listNodeA.Connection.Name.Equals(B.Name) && listNodeA.Line == c)
-                {
-                    return false;
-                }
-
-                listNodeA.Next = new Node(B, c, null);
-                //Console.WriteLine("Connected " + stationName1 + " with " + listNodeA.Next.Connection.Name);
-                return true; 
             }
-
 
             // UNFINISHED
             // check if station1 is in the dictionary of stations S, then access its adj stations and remove station2 (and vice versa)
             // i think we have to reconnect the broken link too?
             //public bool RemoveConnection(string name1, string name2, Colour c) {
 
-                //int i;
+            //int i;
 
-                //REMOVE EDGE FOR BOTH STATIONS SINCE UNDIRECTED
-                //if (S.ContainsKey(name1) && (i = S[name1].FindConnection(name2) > -1))
-                //{
-                    //S[name1].E.RemoveAt(i);             // update once linked list is implemented
-                //}
+            //REMOVE EDGE FOR BOTH STATIONS SINCE UNDIRECTED
+            //if (S.ContainsKey(name1) && (i = S[name1].FindConnection(name2) > -1))
+            //{
+            //S[name1].E.RemoveAt(i);             // update once linked list is implemented
+            //}
             //}
 
 
@@ -192,7 +185,7 @@ namespace A1Q1 {
                 station.Parent = station;
                 Q.Enqueue(station); // add start to queue
 
-                while(Q.Count > 0)
+                while (Q.Count > 0)
                 {
                     station = Q.Dequeue(); // get station from queue
                     if (station.Name == name2) // if station is the destination
@@ -235,7 +228,7 @@ namespace A1Q1 {
 
             public void PrintStations()
             {
-                foreach(KeyValuePair<string, Station> kvp in S)
+                foreach (KeyValuePair<string, Station> kvp in S)
                 {
                     Console.WriteLine(kvp.Key);
                     PrintConnections(kvp.Value);
@@ -270,7 +263,7 @@ namespace A1Q1 {
                 M.InsertStation("BBB");
                 M.InsertStation("CCC");
                 M.InsertStation("DDD");
-                M.InsertConnection("AAA", "BBB", Colour.RED); // connections are not inserting :/
+                M.InsertConnection("AAA", "BBB", Colour.RED);
                 M.InsertConnection("AAA", "BBB", Colour.BLUE);
                 M.InsertConnection("CCC", "AAA", Colour.YELLOW);
                 M.InsertConnection("DDD", "AAA", Colour.YELLOW);
@@ -278,6 +271,8 @@ namespace A1Q1 {
 
 
                 M.PrintStations();
+
+                Console.ReadLine();
             }
         }
 
