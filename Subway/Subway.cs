@@ -16,10 +16,10 @@ namespace A1Q1 {
             public Colour Line { get; set; }            // Colour of its subway line
             public Node? Next { get; set; }              // Link to the next adjacent station (Node)
             
-            public Node()
-            {
-                //Connection = new Station("");
+            public Node() {
+                Connection = null;
                 Line = 0;
+                Next = null;
             }
 
             public Node(Station connection, Colour c, Node next) {
@@ -36,6 +36,7 @@ namespace A1Q1 {
             public string Name { get; set; }            // Name of the subway station
             public bool Visited { get; set; }            // Used for the breadth-first search
             public Node? E { get; set; }                 // Header node for a linked list of adjacent stations
+            public Station? Parent { get; set; }
             public Station(string name) {
                 Name = name;
                 Visited = false;
@@ -172,30 +173,83 @@ namespace A1Q1 {
             //}
 
 
-            // UNFINISHED
-            //public void ShortestRoute(string name1, string name2) { … }
-
-            public void PrintStations()
+            // SHORTEST ROUTE
+            //
+            public bool ShortestRoute(string name1, string name2)
             {
-                Console.WriteLine("STATIONS:");
+                Queue<Station> Q = new Queue<Station>();
+                Station station;
+                Station adjStation;
+                Node n;
 
-                foreach (KeyValuePair<string, Station> i in S)
+                if (!(S.ContainsKey(name1) && S.ContainsKey(name2))) // Check if stations indicated exist
+                    return false;
+
+                station = S[name1]; // start search from first station
+                station.Visited = true;
+                station.Parent = station;
+                Q.Enqueue(station); // add start to queue
+
+                while(Q.Count > 0)
                 {
-                    Console.WriteLine(i.Key);
+                    station = Q.Dequeue(); // get station from queue
+                    if (station.Name == name2) // if station is the destination
+                    {
+                        PrintParents(station); // print all stations from root to current
+                        ClearVisited();
+                        return true;
+                    }
+                    n = station.E.Next; //start of adjacent nodes in station
+                    while (n != null && n.Connection != null)
+                    {
+                        adjStation = n.Connection; //adjStation to station
+                        if (!adjStation.Visited) //if unvisited
+                        {
+                            adjStation.Visited = true; // now visited
+                            adjStation.Parent = station; //parent is current station
+                            Q.Enqueue(adjStation); // add to queue
+                        }
+                        n = n.Next; // next adjecent station to current
+                    }
+                }
+                return false;
+            }
+
+            private void PrintParents(Station station)
+            {
+                if (station.Parent != null && station.Parent != station)
+                    PrintParents(station.Parent);
+                Console.Write(" {0}", station.Name);
+                station.Parent = null;
+            }
+
+            private void ClearVisited()
+            {
+                foreach (KeyValuePair<string, Station> kvp in S)
+                {
+                    kvp.Value.Visited = false;
                 }
             }
 
-            public void PrintConnections()
+            public void PrintStations()
             {
-                Console.WriteLine("CONNECTIONS:");
-
-                foreach (KeyValuePair<string, Station> i in S)
+                foreach(KeyValuePair<string, Station> kvp in S)
                 {
-                    while (i.Value.E != null)
-                    {
-                        Console.WriteLine("(" + i.Value.Name + "-" + i.Value.E.Line + "-" + i.Value.E.Connection.Name + ")");
-                        i.Value.E = i.Value.E.Next;
-                    }
+                    Console.WriteLine(kvp.Key);
+                    PrintConnections(kvp.Value);
+                }
+            }
+
+            private void PrintConnections(Station st)
+            {
+                if (st.E.Next == null)
+                    return;
+                Node n = st.E.Next;
+                while (n != null)
+                {
+                    if (n != null && n.Connection != null && n.Connection.Name != null)
+                        Console.WriteLine("  {0} {1}", n.Connection.Name, n.Line);
+                    n = n.Next;
                 }
             }
         }
@@ -222,7 +276,6 @@ namespace A1Q1 {
 
 
                 M.PrintStations();
-                M.PrintConnections();
             }
         }
 
