@@ -1,4 +1,4 @@
-﻿// AUTHORS: Owen Wertele, Darren Dsilva, Allen Kim
+﻿// AUTHORS: Owen Wurtele, Darren Dsilva, Allen Kim
 // COIS-3020 Winter 2023 -- Assignment 1
 
 
