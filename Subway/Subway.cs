@@ -40,7 +40,7 @@ namespace A1Q1 {
                 Name = name;
                 Visited = false;
                 //E = new List<Node>();
-                //E = new Node();                 // need to fill the Node instance with parameters but idk with what
+                E = null;                 // need to fill the Node instance with parameters but idk with what
             }
 
             //public int FindConnection(string name)      //i think this should be changed to traverse a linked list, not an array
@@ -114,16 +114,16 @@ namespace A1Q1 {
             // check if edge does not already exist
             // add edge to BOTH stations (since undirected)
             // maybe also reconnect lines to accomadate the new station?
-            public bool InsertConnection(string stationName1, string stationName2, Colour c) {
+            //public bool InsertConnection(string stationName1, string stationName2, Colour c) {
 
-                if (S.ContainsKey(stationName1) && S.ContainsKey(stationName2)) {
+                //if (S.ContainsKey(stationName1) && S.ContainsKey(stationName2)) {
 
-                    Insert(stationName1, stationName2, c);
-                    Insert(stationName2, stationName1, c);          // call Insert() twice to establish connection both ways
+                    //Insert(stationName1, stationName2, c);
+                    //Insert(stationName2, stationName1, c);          // call Insert() twice to establish connection both ways
 
-                    //return bool somehow
-                }
-            }
+                    // return bool somehow
+                //}
+            //}
 
 
             private bool Insert(string stationName1, string stationName2, Colour c)
@@ -209,7 +209,7 @@ namespace A1Q1 {
 
                 M.InsertStation("AAA");
                 M.InsertStation("BBB");
-                M.InsertConn
+                //M.InsertConn
                 
 
                 M.PrintStations();
