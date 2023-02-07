@@ -1,4 +1,4 @@
-﻿// AUTHORS: Owen Wurtele, Darren Dsilva, Allen Kim
+﻿// AUTHORS: Owen Wurtele, Darren D'Silva, Allen Kim
 // COIS-3020 Winter 2023 -- Assignment 1
 
 
@@ -60,6 +60,8 @@ namespace A1Q1
             }
 
 
+            // inserts a station by checking if the input station isn't already existing
+            // otherwise if the station already exists, nothing new will be added
             public bool InsertStation(string name)
             {
                 if (S.ContainsKey(name) == false)
@@ -110,12 +112,14 @@ namespace A1Q1
                 return false;
             }
 
-            public bool InsertConnection(string name1, string name2, Colour c)
+
             // Inserts a connection to the end of a linked list of each station in the connection 
             // Searches the stations to add a connection in between, also checks if the stations are together.
+            public bool InsertConnection(string name1, string name2, Colour c)
             {
                 if (S.ContainsKey(name1) && S.ContainsKey(name2))
                 {
+                    // call the method below twice to establish connection both ways!!
                     return InsertDirectedConnection(name1, name2, c) &&
                            InsertDirectedConnection(name2, name1, c);
                 }
@@ -126,8 +130,13 @@ namespace A1Q1
                 }
             }
 
+
+            // traverses through startStation's linked list of connections to check if the given connection
+            // with endStation doesn't already exist. Otherwise, it'll reached the end of the linked list and
+            // create a new Node (connection) for startStation
             private bool InsertDirectedConnection(string start, string end, Colour c)
             {
+                // keep track of each Linked List E for both startStation and endStation
                 Station startStation = S[start];
                 Station endStation = S[end];
                 Node newConnection = new Node(endStation, c, null);
@@ -148,6 +157,9 @@ namespace A1Q1
                 }
             }
 
+
+            // removes connections between two linked lists that are connected to each other,
+            // returns false if connection is not in between two stations
             public bool RemoveConnection(string name1, string name2, Colour c) 
             {
                 if (S.ContainsKey(name1) && S.ContainsKey(name2))
@@ -292,7 +304,7 @@ namespace A1Q1
                 M.InsertConnection("EEE", "CCC", Colour.RED);
                 M.InsertConnection("DDD", "EEE", Colour.RED);
                 M.InsertConnection("BBB", "FFF", Colour.YELLOW);
-                //M.PrintStations();
+                M.PrintStations();
 
 
                 // TEST CASE 4 - Inserting a connection that already exists
@@ -307,11 +319,11 @@ namespace A1Q1
                 //M.PrintStations();
 
 
-                // TEST CASE 6 - Deleting a station                  !!!!! NEEDS REVISING !!!!!
+                // TEST CASE 6 - Deleting a station
 
-                Console.WriteLine("Removed Station CCC");
-                M.RemoveStation("CCC");
-                M.PrintStations();
+                //Console.WriteLine("Removed Station CCC");
+                //M.RemoveStation("CCC");
+                //M.PrintStations();
 
 
                 // TEST CASE 7 - Deleting a connection
@@ -327,10 +339,16 @@ namespace A1Q1
                 //M.PrintStations();
 
 
+                Console.WriteLine("");
+
+
                 // TEST CASE 9a - Finding the shortest path from Point A to Point B
 
-                //Console.WriteLine("The shortest route from AAA to FFF is:");
-                //M.ShortestRoute("AAA", "FFF");      // the shortest route should be AAA -> BBB -> FFF
+                Console.WriteLine("The shortest route from AAA to FFF is:");
+                M.ShortestRoute("AAA", "FFF");      // the shortest route should be AAA -> BBB -> FFF
+
+
+                Console.WriteLine("");
 
 
                 // TEST CASE 9b
@@ -338,7 +356,9 @@ namespace A1Q1
                 Console.WriteLine("The shortest route from DDD to AAA is:");
                 M.ShortestRoute("DDD", "AAA");      // the shortest route should be DDD -> CCC -> BBB -> AAA
 
-                Console.ReadLine();
+                Console.WriteLine("");
+                Console.WriteLine("");
+
             }
         }
     }

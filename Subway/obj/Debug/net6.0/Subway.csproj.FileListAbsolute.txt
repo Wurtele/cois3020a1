@@ -1,18 +1,3 @@
-D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/obj/Debug/net6.0/Subway.csproj.AssemblyReference.cache
-D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/obj/Debug/net6.0/Subway.GeneratedMSBuildEditorConfig.editorconfig
-D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/obj/Debug/net6.0/Subway.AssemblyInfoInputs.cache
-D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/obj/Debug/net6.0/Subway.AssemblyInfo.cs
-D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/obj/Debug/net6.0/Subway.csproj.CoreCompileInputs.cache
-D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/bin/Debug/net6.0/Subway.exe
-D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/bin/Debug/net6.0/Subway.deps.json
-D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/bin/Debug/net6.0/Subway.runtimeconfig.json
-D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/bin/Debug/net6.0/Subway.dll
-D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/bin/Debug/net6.0/Subway.pdb
-D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/obj/Debug/net6.0/Subway.dll
-D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/obj/Debug/net6.0/refint/Subway.dll
-D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/obj/Debug/net6.0/Subway.pdb
-D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/obj/Debug/net6.0/Subway.genruntimeconfig.cache
-D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/obj/Debug/net6.0/ref/Subway.dll
 /Users/darrendsilva/Desktop/COIS 3020/cois3020a1/Subway/bin/Debug/net6.0/Subway
 /Users/darrendsilva/Desktop/COIS 3020/cois3020a1/Subway/bin/Debug/net6.0/Subway.deps.json
 /Users/darrendsilva/Desktop/COIS 3020/cois3020a1/Subway/bin/Debug/net6.0/Subway.runtimeconfig.json
@@ -28,3 +13,18 @@ D:/TRENT U/2023/Winter 2023/COIS 3020/a1/Subway/obj/Debug/net6.0/ref/Subway.dll
 /Users/darrendsilva/Desktop/COIS 3020/cois3020a1/Subway/obj/Debug/net6.0/Subway.pdb
 /Users/darrendsilva/Desktop/COIS 3020/cois3020a1/Subway/obj/Debug/net6.0/Subway.genruntimeconfig.cache
 /Users/darrendsilva/Desktop/COIS 3020/cois3020a1/Subway/obj/Debug/net6.0/ref/Subway.dll
+D:\TRENT U\2023\Winter 2023\COIS 3020\a1\Subway\bin\Debug\net6.0\Subway.exe
+D:\TRENT U\2023\Winter 2023\COIS 3020\a1\Subway\bin\Debug\net6.0\Subway.deps.json
+D:\TRENT U\2023\Winter 2023\COIS 3020\a1\Subway\bin\Debug\net6.0\Subway.runtimeconfig.json
+D:\TRENT U\2023\Winter 2023\COIS 3020\a1\Subway\bin\Debug\net6.0\Subway.dll
+D:\TRENT U\2023\Winter 2023\COIS 3020\a1\Subway\bin\Debug\net6.0\Subway.pdb
+D:\TRENT U\2023\Winter 2023\COIS 3020\a1\Subway\obj\Debug\net6.0\Subway.csproj.AssemblyReference.cache
+D:\TRENT U\2023\Winter 2023\COIS 3020\a1\Subway\obj\Debug\net6.0\Subway.GeneratedMSBuildEditorConfig.editorconfig
+D:\TRENT U\2023\Winter 2023\COIS 3020\a1\Subway\obj\Debug\net6.0\Subway.AssemblyInfoInputs.cache
+D:\TRENT U\2023\Winter 2023\COIS 3020\a1\Subway\obj\Debug\net6.0\Subway.AssemblyInfo.cs
+D:\TRENT U\2023\Winter 2023\COIS 3020\a1\Subway\obj\Debug\net6.0\Subway.csproj.CoreCompileInputs.cache
+D:\TRENT U\2023\Winter 2023\COIS 3020\a1\Subway\obj\Debug\net6.0\Subway.dll
+D:\TRENT U\2023\Winter 2023\COIS 3020\a1\Subway\obj\Debug\net6.0\refint\Subway.dll
+D:\TRENT U\2023\Winter 2023\COIS 3020\a1\Subway\obj\Debug\net6.0\Subway.pdb
+D:\TRENT U\2023\Winter 2023\COIS 3020\a1\Subway\obj\Debug\net6.0\Subway.genruntimeconfig.cache
+D:\TRENT U\2023\Winter 2023\COIS 3020\a1\Subway\obj\Debug\net6.0\ref\Subway.dll
