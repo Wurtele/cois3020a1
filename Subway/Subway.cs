@@ -47,35 +47,7 @@ namespace A1Q1
                 E = new Node();
                 Parent = null;
             }
-
-            //public int FindConnection(string name)      //i think this should be changed to traverse a linked list, not an array
-            //{
-            //int i;
-            //Node *p;
-            //for (i = 0; i < E.Count; i++)
-            //{
-            //if (E[i].Connection.Name.Equals(name))
-            //return i;
-            //}
-            //return -1;
-            //}
         }
-
-        //------------------------------------------
-
-        //public class LinkedList
-        //{
-        //private Node head;
-
-        //public void AddFirstNode(Station connection, Colour c, Node next)
-        //{
-        //Node newNode = new Node(connection, c, next);
-        //head = newNode;
-        //}
-        //}
-
-
-        //------------------------------------------
 
         public class SubwayMap
         {
@@ -98,11 +70,6 @@ namespace A1Q1
                 return false;
             }
 
-
-            // UNFINISHED
-            // access station-to-be-removed's linked list of adjacent stations and delete the node from their lists too.
-            // finally, delete station-to-be-removed
-            // reconnect the missing link
             public bool RemoveStation(string stationName) {
                 
                 if (S.ContainsKey(stationName)) 
@@ -118,6 +85,7 @@ namespace A1Q1
                         if (n.Next.Connection.Name == stationName) n.Next = n.Next.Next; 
                         if (n.Next != null) n = n.Next;
                     }
+                    return true;
                 }
                 return false;
             }
@@ -151,12 +119,27 @@ namespace A1Q1
                 }
             }
 
-            // UNFINISHED
-            // check if station1 is in the dictionary of stations S, then access its adj stations and remove station2 (and vice versa)
-            // i think we have to reconnect the broken link too?
-            //public bool RemoveConnection(string name1, string name2, Colour c) {
-
-            //int i;
+            public bool RemoveConnection(string name1, string name2, Colour c) 
+            {
+                if (S.ContainsKey(name1) && S.ContainsKey(name2))
+                {
+                    Node n = S[name1].E;
+                    while (n.Next != null)
+                    {
+                        if (n.Next.Connection.Name == name2 && n.Next.Line == c) n.Next = n.Next.Next;
+                        if (n.Next != null) n = n.Next;
+                    }
+                    n = S[name2].E;
+                    while (n.Next != null)
+                    {
+                        if (n.Next.Connection.Name == name1 && n.Next.Line == c) n.Next = n.Next.Next;
+                        if (n.Next != null) n = n.Next;
+                    }
+                    return true;
+                }
+                return false;
+            } 
+            
 
             //REMOVE EDGE FOR BOTH STATIONS SINCE UNDIRECTED
             //if (S.ContainsKey(name1) && (i = S[name1].FindConnection(name2) > -1))
@@ -269,13 +252,13 @@ namespace A1Q1
                 M.RemoveStation("CCC");
                 Console.WriteLine("Deleted CCC");
                 M.PrintStations();
-
-
+                Console.WriteLine("Deleted AAA, BBB");
+                M.RemoveConnection("AAA", "BBB", Colour.BLUE);
+                M.PrintStations();
 
 
                 Console.ReadLine();
             }
         }
-
     }
 }
