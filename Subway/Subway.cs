@@ -254,22 +254,26 @@ namespace A1Q1
                 M.InsertConnection("EEE", "CCC", Colour.RED);
                 M.InsertConnection("DDD", "EEE", Colour.RED);
                 M.InsertConnection("BBB", "FFF", Colour.YELLOW);
-                M.PrintStations();
+                //M.PrintStations();
 
 
                 // TEST CASE 4 - Deleting a station
 
-                Console.WriteLine("Removed Station CCC");
-                M.RemoveStation("CCC");
-                M.PrintStations();
+                //Console.WriteLine("Removed Station CCC");
+                //M.RemoveStation("CCC");
+                //M.PrintStations();
 
 
                 // TEST CASE 5 - Deleting a connection
 
                 Console.WriteLine("Deleted EEE, FFF");
                 M.RemoveConnection("EEE", "FFF", Colour.BLUE);
-                //M.PrintStations();
+                M.PrintStations();
 
+
+                // TEST CASE 6 - Finding the shortest path from Point A to Point B
+
+                //M.ShortestRoute("AAA", "FFF");      // the shortest route should be AAA -> BBB -> FFF
 
                 Console.ReadLine();
             }
