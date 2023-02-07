@@ -141,14 +141,6 @@ namespace A1Q1
             } 
             
 
-            //REMOVE EDGE FOR BOTH STATIONS SINCE UNDIRECTED
-            //if (S.ContainsKey(name1) && (i = S[name1].FindConnection(name2) > -1))
-            //{
-            //S[name1].E.RemoveAt(i);             // update once linked list is implemented
-            //}
-            //}
-
-
             // SHORTEST ROUTE
             //
             public bool ShortestRoute(string name1, string name2)
@@ -243,26 +235,40 @@ namespace A1Q1
                 
                 // TEST CASE 2 - Inserting five stations
 
-                M.InsertStation("Alpha");
-                M.InsertStation("Beta");
-                M.InsertStation("Delta");
-                M.InsertStation("Epsilon");
-                M.InsertStation("Theta");
+                M.InsertStation("AAA");
+                M.InsertStation("BBB");
+                M.InsertStation("CCC");
+                M.InsertStation("DDD");
+                M.InsertStation("EEE");
+                M.InsertStation("FFF");
                 //M.PrintStations();
 
 
                 // TEST CASE 3 - Inserting connections
 
-                M.InsertConnection("Alpha", "Beta", Colour.RED);
-                M.InsertConnection("Beta", "Alpha", Colour.BLUE);
-                M.InsertConnection("Delta", "Alpha", Colour.YELLOW);
-                M.InsertConnection("Epsilon", "Alpha", Colour.YELLOW);
-                M.InsertConnection("Epsilon", "Beta", Colour.BLUE);
-                M.InsertConnection("Epsilon", "Theta", Colour.RED);
+                M.InsertConnection("AAA", "BBB", Colour.BLUE);
+                M.InsertConnection("BBB", "CCC", Colour.BLUE);
+                M.InsertConnection("CCC", "BBB", Colour.RED);
+                M.InsertConnection("CCC", "DDD", Colour.YELLOW);
+                M.InsertConnection("FFF", "EEE", Colour.BLUE);
+                M.InsertConnection("EEE", "CCC", Colour.RED);
+                M.InsertConnection("DDD", "EEE", Colour.RED);
+                M.InsertConnection("BBB", "FFF", Colour.YELLOW);
                 M.PrintStations();
-                Console.WriteLine("Deleted AAA, BBB");
-                M.RemoveConnection("AAA", "BBB", Colour.BLUE);
+
+
+                // TEST CASE 4 - Deleting a station
+
+                Console.WriteLine("Removed Station CCC");
+                M.RemoveStation("CCC");
                 M.PrintStations();
+
+
+                // TEST CASE 5 - Deleting a connection
+
+                Console.WriteLine("Deleted EEE, FFF");
+                M.RemoveConnection("EEE", "FFF", Colour.BLUE);
+                //M.PrintStations();
 
 
                 Console.ReadLine();
