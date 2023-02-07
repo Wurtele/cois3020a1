@@ -67,6 +67,7 @@ namespace A1Q1
                     S.Add(name, newStation);
                     return true;
                 }
+                Console.WriteLine("Station " + name + " already exists. Failed to insert new station.");
                 return false;
             }
 
@@ -94,10 +95,15 @@ namespace A1Q1
             public bool InsertConnection(string name1, string name2, Colour c)
             {
                 if (S.ContainsKey(name1) && S.ContainsKey(name2))
+                {
                     return InsertDirectedConnection(name1, name2, c) &&
                            InsertDirectedConnection(name2, name1, c);
+                }
                 else
+                {
+                    Console.WriteLine("Failed to insert new connection. Must be between two stations that already exist!");
                     return false;
+                }
             }
 
             private bool InsertDirectedConnection(string start, string end, Colour c)
@@ -111,7 +117,10 @@ namespace A1Q1
                     n = n.Next;
 
                 if (n.Next != null && n.Next.Connection == endStation && n.Next.Line == c)
+                {
+                    Console.WriteLine("Failed to insert new connection. That connection already exists!");
                     return false;
+                }
                 else
                 {
                     n.Next = newConnection;
@@ -137,6 +146,7 @@ namespace A1Q1
                     }
                     return true;
                 }
+                Console.WriteLine("Failed to remove connection. Make sure it's a connection between two stations that exist!");
                 return false;
             } 
             
@@ -233,7 +243,7 @@ namespace A1Q1
                 SubwayMap M = new SubwayMap();
 
                 
-                // TEST CASE 2 - Inserting five stations
+                // TEST CASE 1 - Inserting five stations
 
                 M.InsertStation("AAA");
                 M.InsertStation("BBB");
@@ -241,6 +251,12 @@ namespace A1Q1
                 M.InsertStation("DDD");
                 M.InsertStation("EEE");
                 M.InsertStation("FFF");
+                //M.PrintStations();
+
+
+                // TEST CASE 2 - Inserting a station that already exists
+
+                //M.InsertStation("AAA");
                 //M.PrintStations();
 
 
@@ -257,23 +273,48 @@ namespace A1Q1
                 //M.PrintStations();
 
 
-                // TEST CASE 4 - Deleting a station
+                // TEST CASE 4 - Inserting a connection that already exists
+
+                //M.InsertConnection("AAA", "BBB", Colour.BLUE);
+                //M.PrintStations();
+
+
+                // TEST CASE 5 - Inserting a connection between a station that doesn't exist
+
+                //M.InsertConnection("AAA", "fakeStation", Colour.BLUE);
+                //M.PrintStations();
+
+
+                // TEST CASE 6 - Deleting a station                  !!!!! NEEDS REVISING !!!!!
 
                 //Console.WriteLine("Removed Station CCC");
                 //M.RemoveStation("CCC");
                 //M.PrintStations();
 
 
-                // TEST CASE 5 - Deleting a connection
+                // TEST CASE 7 - Deleting a connection
 
-                Console.WriteLine("Deleted EEE, FFF");
-                M.RemoveConnection("EEE", "FFF", Colour.BLUE);
-                M.PrintStations();
+                //Console.WriteLine("Deleted EEE, FFF");
+                //M.RemoveConnection("EEE", "FFF", Colour.BLUE);
+                //M.PrintStations();
 
 
-                // TEST CASE 6 - Finding the shortest path from Point A to Point B
+                // TEST CASE 8 - Deleting a connection between a station that doesn't exist
 
+                //M.RemoveConnection("EEE", "fakeStation", Colour.BLUE);
+                //M.PrintStations();
+
+
+                // TEST CASE 9a - Finding the shortest path from Point A to Point B
+
+                //Console.WriteLine("The shortest route from AAA to FFF is:");
                 //M.ShortestRoute("AAA", "FFF");      // the shortest route should be AAA -> BBB -> FFF
+
+
+                // TEST CASE 9b
+
+                Console.WriteLine("The shortest route from DDD to AAA is:");
+                M.ShortestRoute("DDD", "AAA");      // the shortest route should be DDD -> CCC -> BBB -> AAA
 
                 Console.ReadLine();
             }
