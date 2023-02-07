@@ -276,7 +276,7 @@ namespace A1Q1
                 M.InsertConnection("Epsilon", "Alpha", Colour.YELLOW);
                 M.InsertConnection("Epsilon", "Beta", Colour.BLUE);
                 M.InsertConnection("Epsilon", "Theta", Colour.RED);
-                //M.PrintStations();
+                M.PrintStations();
                 
 
                 // TEST CASE 4
@@ -289,7 +289,9 @@ namespace A1Q1
                 // TEST CASE 5
 
 
-                // TEST CASE 6
+
+
+                // TEST CASE 6 - Finding the shortest route from station Delta to station Theta
 
                 M.ShortestRoute("Delta", "Theta");          // should be 3 lines: from Delta, Alpha, Epsilon, Theta
 
