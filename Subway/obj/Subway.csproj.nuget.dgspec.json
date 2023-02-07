@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\TRENT U\\2023\\Winter 2023\\COIS 3020\\a1\\Subway\\Subway.csproj": {}
+    "/Users/darrendsilva/Desktop/COIS 3020/cois3020a1/Subway/Subway.csproj": {}
   },
   "projects": {
-    "D:\\TRENT U\\2023\\Winter 2023\\COIS 3020\\a1\\Subway\\Subway.csproj": {
+    "/Users/darrendsilva/Desktop/COIS 3020/cois3020a1/Subway/Subway.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\TRENT U\\2023\\Winter 2023\\COIS 3020\\a1\\Subway\\Subway.csproj",
+        "projectUniqueName": "/Users/darrendsilva/Desktop/COIS 3020/cois3020a1/Subway/Subway.csproj",
         "projectName": "Subway",
-        "projectPath": "D:\\TRENT U\\2023\\Winter 2023\\COIS 3020\\a1\\Subway\\Subway.csproj",
-        "packagesPath": "C:\\Users\\alsek\\.nuget\\packages\\",
-        "outputPath": "D:\\TRENT U\\2023\\Winter 2023\\COIS 3020\\a1\\Subway\\obj\\",
+        "projectPath": "/Users/darrendsilva/Desktop/COIS 3020/cois3020a1/Subway/Subway.csproj",
+        "packagesPath": "/Users/darrendsilva/.nuget/packages/",
+        "outputPath": "/Users/darrendsilva/Desktop/COIS 3020/cois3020a1/Subway/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alsek\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/darrendsilva/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,12 +48,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.osx-x64",
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/7.0.102/RuntimeIdentifierGraph.json"
         }
       }
     }

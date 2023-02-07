@@ -3,6 +3,7 @@
 
 
 using System;
+using System.ComponentModel.Design;
 using System.Drawing;
 using System.Xml.Linq;
 
@@ -71,28 +72,47 @@ namespace A1Q1
                 return false;
             }
 
-            public bool RemoveStation(string stationName) {
-                
-                if (S.ContainsKey(stationName)) 
+            public bool RemoveStation(string stationName)
+            {
+                // checks the station name to be removed and deletes it
+                if (S.ContainsKey(stationName))
                 {
-                    // now we must remove the station-to-be-removed from other stations that have connections to it                    
-                        S.Remove(stationName);
-                }
-                foreach (KeyValuePair<string, Station> kvp in S)
-                {
-                    Node n = kvp.Value.E;
-                    while(n.Next != null)
+                    S.Remove(stationName);
+                    // removes the connections from other stations that have connections to the station
+                    // also checks if the current node could possibly be a station that needs to be removed
+                    // created a node to store the previous node in order to remove the current node 
+                    foreach (KeyValuePair<string, Station> kvp in S)
                     {
-                        if (n.Next.Connection.Name == stationName) n.Next = n.Next.Next; 
-                        if (n.Next != null) n = n.Next;
+                        Node n = kvp.Value.E.Next;
+                        Node p = null;
+                        while (n != null)
+                        {
+                            if (n.Connection.Name == stationName)
+                            {
+                                if (p != null)
+                                {
+                                    p.Next = n.Next;
+                                }
+                                else
+                                {
+                                    kvp.Value.E.Next = n.Next;
+                                }
+                            }
+                            else
+                            {
+                                p = n;
+                            }
+                            n = n.Next;
+                        }
                     }
                     return true;
                 }
                 return false;
             }
 
-
             public bool InsertConnection(string name1, string name2, Colour c)
+            // Inserts a connection to the end of a linked list of each station in the connection 
+            // Searches the stations to add a connection in between, also checks if the stations are together.
             {
                 if (S.ContainsKey(name1) && S.ContainsKey(name2))
                 {
@@ -132,12 +152,14 @@ namespace A1Q1
             {
                 if (S.ContainsKey(name1) && S.ContainsKey(name2))
                 {
+                    // removes the connection by skipping vertices from the first station
                     Node n = S[name1].E;
                     while (n.Next != null)
                     {
                         if (n.Next.Connection.Name == name2 && n.Next.Line == c) n.Next = n.Next.Next;
                         if (n.Next != null) n = n.Next;
                     }
+                    // removes the connection by skipping vertices from the second station
                     n = S[name2].E;
                     while (n.Next != null)
                     {
@@ -287,9 +309,9 @@ namespace A1Q1
 
                 // TEST CASE 6 - Deleting a station                  !!!!! NEEDS REVISING !!!!!
 
-                //Console.WriteLine("Removed Station CCC");
-                //M.RemoveStation("CCC");
-                //M.PrintStations();
+                Console.WriteLine("Removed Station CCC");
+                M.RemoveStation("CCC");
+                M.PrintStations();
 
 
                 // TEST CASE 7 - Deleting a connection
